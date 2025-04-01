@@ -45,8 +45,7 @@ def extract_structured_data(raw_text):
     - Name
     - PAN Number
     - Date of Birth (DOB)
-    - Gender
-    - Aadhar Number
+    
     
     Raw Text:
     {raw_text}
@@ -57,8 +56,6 @@ def extract_structured_data(raw_text):
         "Name": "John Doe",
         "PAN": "ABCDE1234F",
         "DOB": "01/01/1990",
-        "GENDER":"MALE/FEMALE"
-        "AADHAR:"1234 5678 9101"
     }}
     """
 
@@ -108,7 +105,7 @@ def validate_extracted_data(data):
 
     user_proxy = autogen.UserProxyAgent(
         name="user",
-        human_input_mode="ALWAYS",
+        human_input_mode="NEVER",
         is_termination_msg=lambda x: x.get("content") in ["TERMINATE", "DONE"],
         code_execution_config={"use_docker": False}
     )
@@ -175,6 +172,6 @@ def main(file_path):
 
 # 🔹 Run the script
 if __name__ == "__main__":
-    main("img.png")  # Replace with actual file path
+    main("Your doc file path")  # Replace with actual file path
 
 
